@@ -12,7 +12,7 @@ public class TimesheetController {
         }
 
         String md5Token = ApexPages.currentPage().getParameters().get('md5Token');
-        contact = [SELECT FirstName, LastName FROM Contact WHERE MD5_Token__c = :md5Token LIMIT 1];
+        contact = [SELECT FirstName, LastName, Form_Filled__c FROM Contact WHERE MD5_Token__c = :md5Token LIMIT 1];
     }
 
     public class ProjectWrapper {
@@ -35,6 +35,8 @@ public class TimesheetController {
                 insert junction;
             }
         }
-        return null;
+        contact.Form_Filled__c = true;
+        update contact;
+        return Page.ReportFormCompleted;
     }
 }
