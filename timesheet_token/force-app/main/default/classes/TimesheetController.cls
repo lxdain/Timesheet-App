@@ -4,15 +4,16 @@ public class TimesheetController {
     public List<ProjectWrapper> projects { get; set; }
 
     public TimesheetController() {
+        String md5Token = ApexPages.currentPage().getParameters().get('md5Token');
+        contact = [SELECT Id, FirstName, LastName, Form_Filled__c FROM Contact WHERE MD5_Token__c = :md5Token LIMIT 1];
+
         timesheet = new Timesheet__c();
+        timesheet.Employee__c = contact.Id;
 
         projects = new List<ProjectWrapper>();
         for (Project__c project : [SELECT Id, Name FROM Project__c]) {
             projects.add(new ProjectWrapper(project));
         }
-
-        String md5Token = ApexPages.currentPage().getParameters().get('md5Token');
-        contact = [SELECT FirstName, LastName, Form_Filled__c FROM Contact WHERE MD5_Token__c = :md5Token LIMIT 1];
     }
 
     public class ProjectWrapper {
