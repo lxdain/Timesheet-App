@@ -1,0 +1,7 @@
+.btn.btn-primary.dropdown-toggle,
+.slds-button.slds-button_brand.slds-button_neutral {
+    background-color: white !important;
+    color: black !important;
+    border-color: white !important;
+    font-family: 'Anonymous Pro', monospace;
+}

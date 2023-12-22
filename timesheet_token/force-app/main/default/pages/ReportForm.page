@@ -1,0 +1,100 @@
+<apex:page controller="TimesheetController" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" docType="html-5.0">
+    <html lang="en">
+
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+            <title>Timesheet</title>
+            <!-- Bootstrap CSS from CDN -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+            <!-- Anonymous Pro Font from Google -->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap"/>
+            <!-- CSS -->
+            <apex:stylesheet value="{!URLFOR($Resource.reportCss)}"/>
+        </head>
+
+        <body style="background: #212529; color: white; font-family:'Anonymous Pro', monospace;">
+            <section>
+                <h1 class="text-center text-capitalize" style="font-weight: bold;padding: 10px;margin: 20px;margin-bottom: 10px;">Tell us about your day!</h1>
+                <div class="container">
+                    <apex:form id="application-form">
+
+                        <!-- Employee__c field (Populated with the current user's name) -->
+                        <div class="form-group mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <p><strong>Employee</strong><span class="text-danger">*</span></p>
+                                    <p>{!contact.FirstName} {!contact.LastName}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Date__c field (Populated with today's date) -->
+                        <div class="form-group mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <p><strong>Date</strong><span class="text-danger">*</span></p>
+                                    <apex:outputText value="{0,date,dd.MM.yyyy}">
+                                        <apex:param value="{!NOW()}" />
+                                    </apex:outputText>
+                                </div>
+                            </div>
+                        </div>          
+
+                        <!-- Projects field -->
+                        <div class="form-group mb-3">
+                            <p><strong>Projects&nbsp;</strong><span class="text-danger">*</span></p>
+                            <apex:repeat value="{!projects}" var="project">
+                                <div class="form-check">
+                                    <apex:inputCheckbox value="{!project.selected}" styleClass="form-check-input" />
+                                    <apex:outputLabel value="{!project.project.Name}" styleClass="form-check-label" />
+                                </div>
+                            </apex:repeat>
+                        </div>
+
+                        <!-- Hours_Worked__c field -->
+                        <div class="form-group mb-3">
+                            <p><strong>Hours Worked&nbsp;</strong><span class="text-danger">*</span></p>
+                            <apex:inputField value="{!timesheet.Hours_Worked__c}" styleClass="form-control" required="true"/>
+                        </div>
+
+                        <!-- "Need some time off?" fields -->
+                        <div class="form-group mb-3">
+                            <p><strong>Need some time off?&nbsp;</strong></p>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="startDate">Start Date</label>
+                                    <apex:inputField value="{!timesheet.Time_Off_Start__c}" styleClass="form-control" showDatePicker="true"/>
+                                </div>
+                                <div class="col">
+                                    <label for="endDate">End Date</label>
+                                    <apex:inputField value="{!timesheet.Time_Off_End__c}" styleClass="form-control" showDatePicker="true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Additional_Notes__c field -->
+                        <div class="form-group mb-3">
+                            <strong>Give us some details!&nbsp;</strong><span class="text-danger">*</span>
+                            <apex:inputTextarea value="{!timesheet.Additional_Notes__c}" styleClass="form-control" required="true"/>
+                        </div>
+                        <div class="justify-content-center d-flex form-group mb-3">
+                            <div id="submit-btn">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <apex:commandButton value="Share!" action="{!submitForm}" styleClass="btn btn-primary" style="background-color: white !important; color: black !important; border-color: white !important; font-family: 'Anonymous Pro', monospace;"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:form>
+                </div>
+            </section>
+        </body>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </html>
+</apex:page>

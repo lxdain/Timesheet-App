@@ -1,0 +1,32 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false">
+    <html lang="en">
+        <head>
+            <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+            <title>Timesheet</title>
+            <!-- Bootstrap CSS from CDN -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+            <!-- Anonymous Pro Font from Google -->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro&display=swap"/>
+            <!-- CSS -->
+            <apex:stylesheet value="{!URLFOR($Resource.reportCss)}"/>
+        </head>
+
+        <body class="bg-dark text-white" style="background: #212529; color: white; font-family:'Anonymous Pro', monospace;">
+            <div class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+                <div class="text-center">
+                    <h1>Thank you for completing this survey!</h1>
+                    <br/>
+                    <div class="text-center">
+                        <p>You may now close this tab.</p>
+                    </div>
+                </div>
+            </div>
+        </body>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </html>
+</apex:page>
