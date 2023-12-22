@@ -27,7 +27,15 @@ public class TimesheetController {
     }
 
     public PageReference submitForm() {
+        String selectedActivities = '';
+        for (ProjectWrapper wrapper : projects) {
+            if (wrapper.selected) {
+                selectedActivities += wrapper.project.Name + '; ';
+            }
+        }
+        timesheet.Activities__c = selectedActivities;
         insert timesheet;
+    
         for (ProjectWrapper wrapper : projects) {
             if (wrapper.selected) {
                 Timesheet_Project__c junction = new Timesheet_Project__c();
@@ -36,6 +44,7 @@ public class TimesheetController {
                 insert junction;
             }
         }
+    
         contact.Form_Filled__c = true;
         update contact;
         return Page.ReportFormCompleted;
