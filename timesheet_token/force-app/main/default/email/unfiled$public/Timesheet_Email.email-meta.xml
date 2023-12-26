@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Timesheet Email</name>
+    <style>none</style>
+    <subject>It&apos;s time to complete your daily report.</subject>
+    <textOnly>Hello {!Contact.Name},
+
+It&apos;s time to complete your daily report.
+Please, answer honestly and provide additional details if possible.
+
+
+Complete the report!
+https://empathetic-koala-7aqdaz-dev-ed.trailblaze.my.salesforce-sites.com/timesheet/ReportForm?md5Token={!Contact.MD5_Token__c}
+
+Sincerely,
+Your HR Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

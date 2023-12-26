@@ -5,10 +5,16 @@ public class TimesheetController {
 
     public TimesheetController() {
         String md5Token = ApexPages.currentPage().getParameters().get('md5Token');
-        contact = [SELECT Id, FirstName, LastName, Form_Filled__c FROM Contact WHERE MD5_Token__c = :md5Token LIMIT 1];
-
+        List<Contact> contacts = [SELECT Id, FirstName, LastName, Form_Filled__c FROM Contact WHERE MD5_Token__c = :md5Token LIMIT 1];
+        
         timesheet = new Timesheet__c();
-        timesheet.Employee__c = contact.Id;
+        
+        if (!contacts.isEmpty()) {
+            contact = contacts[0];
+            timesheet.Employee__c = contact.Id;
+        } else {
+            contact = new Contact();
+        }
 
         projects = new List<ProjectWrapper>();
         for (Project__c project : [SELECT Id, Name FROM Project__c]) {
@@ -48,5 +54,14 @@ public class TimesheetController {
         contact.Form_Filled__c = true;
         update contact;
         return Page.ReportFormCompleted;
+    }
+
+    public PageReference checkFormFilled() {
+        if (contact != null && contact.Form_Filled__c) {
+            PageReference pageRef = new PageReference('/ReportFormCompleted');
+            pageRef.setRedirect(true);
+            return pageRef;
+        }
+        return null;
     }
 }

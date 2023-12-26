@@ -1,6 +1,5 @@
-<apex:page controller="TimesheetController" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" docType="html-5.0">
+<apex:page controller="TimesheetController" showHeader="true" sidebar="false" standardStylesheets="false" applyBodyTag="false" docType="html-5.0" action="{!checkFormFilled}">
     <html lang="en">
-
         <head>
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
@@ -19,7 +18,7 @@
                 <div class="container">
                     <apex:form id="application-form">
 
-                        <!-- Employee__c field (Populated with the current user's name) -->
+                        <!-- Employee__c field -->
                         <div class="form-group mb-3">
                             <div class="row">
                                 <div class="col">
@@ -29,7 +28,7 @@
                             </div>
                         </div>
 
-                        <!-- Date__c field (Populated with today's date) -->
+                        <!-- Date__c field (Today's Date) -->
                         <div class="form-group mb-3">
                             <div class="row">
                                 <div class="col">
@@ -58,17 +57,21 @@
                             <apex:inputField value="{!timesheet.Hours_Worked__c}" styleClass="form-control" required="true"/>
                         </div>
 
-                        <!-- "Need some time off?" fields -->
+                        <!-- Time Off fields -->
                         <div class="form-group mb-3">
                             <p><strong>Need some time off?&nbsp;</strong></p>
                             <div class="row">
                                 <div class="col">
                                     <label for="startDate">Start Date</label>
-                                    <apex:inputField value="{!timesheet.Time_Off_Start__c}" styleClass="form-control" showDatePicker="true"/>
+                                    <div title="Enter the date in the format MM/dd/yyyy">
+                                        <apex:inputField value="{!timesheet.Time_Off_Start__c}" styleClass="form-control" showDatePicker="false"/>
+                                    </div>
                                 </div>
                                 <div class="col">
                                     <label for="endDate">End Date</label>
-                                    <apex:inputField value="{!timesheet.Time_Off_End__c}" styleClass="form-control" showDatePicker="true"/>
+                                    <div title="Enter the date in the format MM/dd/yyyy">
+                                        <apex:inputField value="{!timesheet.Time_Off_End__c}" styleClass="form-control" showDatePicker="false"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>

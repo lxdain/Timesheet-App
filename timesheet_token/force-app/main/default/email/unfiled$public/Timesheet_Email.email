@@ -1,0 +1,42 @@
+<html style="overflow-y: hidden;">
+<head>
+    <title></title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        button {
+            font-family: sans-serif;
+            font-size: 16px;
+            padding: 15px 30px;
+            background-color: #2380fb;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hello {!Contact.Name},</p>
+
+<p>It&#39;s time to complete your daily report.<br />
+Please, answer honestly and provide additional details if possible.</p>
+
+<br/>
+
+<button><a href="https://empathetic-koala-7aqdaz-dev-ed.trailblaze.my.salesforce-sites.com/timesheet/ReportForm?md5Token={!Contact.MD5_Token__c}">Complete the report!</a></button>
+
+<br/>
+<br/>
+
+<p>Sincerely,<br/>
+Your HR Team</p>
+</body>
+</html>
