@@ -1,6 +1,6 @@
 # Timesheet App for Intermino
 
-The repo you are currently looking at is a cumulation of my work during the 2 month long **Salesforce Internship at Intermino.** The application is a survey automatically sent through email each day with which employees can effectively log their daily activities and tasks as well as additional information such as requesting vacancies. 
+The repo you are currently looking at is a cumulation of my work during the 2 month long **[Salesforce Internship at Intermino](https://trailhead.salesforce.com/users/lxdain/trailmixes/intermino-internship).** The application is a survey automatically sent through email each day with which employees can effectively log their daily activities and tasks as well as additional information such as requesting vacancies. 
 
 ## Tech Stack
 
