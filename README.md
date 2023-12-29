@@ -19,7 +19,7 @@ The current data model has a few custom objects or custom fields which help enab
  3. **Project__c**
  4. **Timesheet_Project__c**
  
- The **Contact** object has an checkbox field called *Employee__c* which if checked, utilizing the aforementioned Apex Trigger generates a unique token for that particular employee on the custom *MD5_Token__c* field. This token creation also makes them eligible to receive the daily email due to a conditional set in the Salesforce Flow which regulates this behavior. There also exists a *Form_Filled__c* checkbox which automatically gets updated to true once a new Timesheet record related to each employee has been created which blocks them from accessing the survey until the next one gets sent tomorrow/
+The **Contact** object has an checkbox field called *Employee__c* which if checked, utilizing the aforementioned Apex Trigger generates a unique token for that particular employee on the custom *MD5_Token__c* field. This token creation also makes them eligible to receive the daily email due to a conditional set in the Salesforce Flow which regulates this behavior. There also exists a *Form_Filled__c* checkbox which automatically gets updated to true once a new Timesheet record related to each employee has been created which blocks them from accessing the survey until the next one gets sent tomorrow/
 
 The **Timesheet__c** & **Project__c** objects are just standard functionality.
 The Timesheet object is used as a template for the survey and the Project object is used to store different ongoing projects enabling the employee to select what they worked on that day.
